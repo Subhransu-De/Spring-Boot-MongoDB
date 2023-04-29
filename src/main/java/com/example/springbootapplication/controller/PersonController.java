@@ -1,5 +1,7 @@
-package com.example.SpringLearnMongoDB.Vacancy;
+package com.example.springbootapplication.controller;
 
+import com.example.springbootapplication.domain.Person;
+import com.example.springbootapplication.service.PersonService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,39 +18,39 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/vacancies")
-public class VacancyController {
+public class PersonController {
 
-  private final VacancyService vacancyService;
+  private final PersonService personService;
 
   @Autowired
-  public VacancyController(VacancyService vacancyService) {
-    this.vacancyService = vacancyService;
+  public PersonController(PersonService personService) {
+    this.personService = personService;
   }
 
   @GetMapping
-  public List<Vacancy> getVacancies() {
-    return vacancyService.getVacancies();
+  public List<Person> getVacancies() {
+    return personService.getVacancies();
   }
 
   @GetMapping(value = "/{id}")
-  public ResponseEntity<Vacancy> getVacancyById(@PathVariable("id") String vacancy_id) {
-    return vacancyService.getVacancyById(vacancy_id);
+  public ResponseEntity<Person> getVacancyById(@PathVariable("id") String vacancy_id) {
+    return personService.getVacancyById(vacancy_id);
   }
 
   @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<Vacancy> createVacancy(@RequestBody Vacancy requestBody) {
-    return vacancyService.createVacancy(requestBody);
+  public ResponseEntity<Person> createVacancy(@RequestBody Person requestBody) {
+    return personService.createVacancy(requestBody);
   }
 
   @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<Vacancy> updateVacancy(@PathVariable("id") String vacancy_id,
-      @RequestBody Vacancy requestBody) {
-    return vacancyService.updateVacancy(vacancy_id, requestBody);
+  public ResponseEntity<Person> updateVacancy(@PathVariable("id") String vacancy_id,
+                                              @RequestBody Person requestBody) {
+    return personService.updateVacancy(vacancy_id, requestBody);
   }
 
   @DeleteMapping(value = "/{id}")
   public ResponseEntity<HttpStatus> deleteVacancy(@PathVariable("id") String vacancy_id) {
-    return vacancyService.deleteVacancy(vacancy_id);
+    return personService.deleteVacancy(vacancy_id);
   }
 
 }

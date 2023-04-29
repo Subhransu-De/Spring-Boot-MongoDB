@@ -1,4 +1,4 @@
-package com.example.SpringLearnMongoDB.Config;
+package com.example.springbootapplication.config;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.convert.DefaultMongoTypeMapper;
 import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
 
 @Configuration
-public class MongoConfig implements InitializingBean {
+public class AppConfiguration implements InitializingBean {
 
     @Autowired
     private MappingMongoConverter mappingMongoConverter;
